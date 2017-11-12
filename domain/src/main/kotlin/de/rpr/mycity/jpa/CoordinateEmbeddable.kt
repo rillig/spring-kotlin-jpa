@@ -1,12 +1,11 @@
-package de.rpr.mycity.domain.location.jpa
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.DoubleAttributeConverter
-import de.rpr.mycity.domain.location.api.CoordinateDto
+import de.rpr.mycity.api.CoordinateDto
 import javax.persistence.Convert
 import javax.persistence.Embeddable
 
 @Embeddable
-internal data class Coordinate(
+internal data class CoordinateEmbeddable(
         @Convert(converter = DoubleAttributeConverter::class) val longitude: Double,
         @Convert(converter = DoubleAttributeConverter::class) val latitude: Double) {
 
@@ -16,8 +15,8 @@ internal data class Coordinate(
 
     companion object {
 
-        fun origin() = Coordinate()
+        fun origin() = CoordinateEmbeddable()
 
-        fun fromDto(dto: CoordinateDto): Coordinate = Coordinate(dto.longitude, dto.latitude)
+        fun fromDto(dto: CoordinateDto): CoordinateEmbeddable = CoordinateEmbeddable(dto.longitude, dto.latitude)
     }
 }

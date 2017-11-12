@@ -1,9 +1,8 @@
-package de.rpr.mycity.domain.city.entity
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.city.api.dto.CityDto
-import de.rpr.mycity.domain.city.api.dto.CreateCityDto
-import de.rpr.mycity.domain.city.api.dto.UpdateCityDto
-import de.rpr.mycity.domain.location.jpa.Coordinate
+import de.rpr.mycity.api.CityDto
+import de.rpr.mycity.api.CreateCityDto
+import de.rpr.mycity.api.UpdateCityDto
 import java.time.LocalDateTime
 import javax.persistence.Embedded
 import javax.persistence.Entity
@@ -17,7 +16,7 @@ internal data class CityEntity(
         @Id val id: String? = null,
         val name: String,
         val description: String? = null,
-        @Embedded val location: Coordinate,
+        @Embedded val location: CoordinateEmbeddable,
         val updatedAt: LocalDateTime = LocalDateTime.now(),
         val createdAt: LocalDateTime = LocalDateTime.now()) {
 
@@ -25,17 +24,8 @@ internal data class CityEntity(
     @Suppress("unused")
     private constructor() : this(
             name = "",
-            location = Coordinate.origin(),
+            location = CoordinateEmbeddable.origin(),
             updatedAt = LocalDateTime.MIN)
-
-    fun toDto(): CityDto = CityDto(
-            id = this.id!!,
-            name = this.name,
-            description = this.description,
-            location = this.location.toDto(),
-            updatedAt = this.updatedAt,
-            createdAt = this.createdAt
-    )
 
     companion object {
 
@@ -43,7 +33,7 @@ internal data class CityEntity(
                 id = dto.id,
                 name = dto.name,
                 description = dto.description,
-                location = Coordinate.fromDto(dto.location),
+                location = CoordinateEmbeddable.fromDto(dto.location),
                 updatedAt = dto.updatedAt,
                 createdAt = dto.createdAt)
 
@@ -51,16 +41,25 @@ internal data class CityEntity(
                 id = dto.id,
                 name = dto.name,
                 description = dto.description,
-                location = Coordinate(dto.location.longitude, dto.location.latitude))
+                location = CoordinateEmbeddable(dto.location.longitude, dto.location.latitude))
 
         fun fromDto(dto: UpdateCityDto, defaultCity: CityEntity) = CityEntity(
                 id = defaultCity.id!!,
                 name = dto.name ?: defaultCity.name,
                 description = dto.description ?: defaultCity.description,
-                location = if (dto.location != null) Coordinate.fromDto(dto.location) else defaultCity.location,
+                location = if (dto.location != null) CoordinateEmbeddable.fromDto(dto.location) else defaultCity.location,
                 updatedAt = LocalDateTime.now(),
                 createdAt = defaultCity.createdAt)
 
     }
 
 }
+
+internal fun CityEntity.toDto(): CityDto = CityDto(
+        id = this.id!!,
+        name = this.name,
+        description = this.description,
+        location = this.location.toDto(),
+        updatedAt = this.updatedAt,
+        createdAt = this.createdAt
+)

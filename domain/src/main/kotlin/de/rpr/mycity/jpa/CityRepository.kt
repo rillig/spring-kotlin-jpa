@@ -1,6 +1,6 @@
-package de.rpr.mycity.domain.city.repository
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.city.entity.CityEntity
+import de.rpr.mycity.jpa.CityEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import javax.transaction.Transactional

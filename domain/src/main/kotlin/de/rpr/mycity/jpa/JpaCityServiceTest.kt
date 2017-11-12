@@ -1,13 +1,9 @@
-package de.rpr.mycity.domain.city
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.city.api.CityConfig
-import de.rpr.mycity.domain.city.api.CityService
-import de.rpr.mycity.domain.city.api.dto.CreateCityDto
-import de.rpr.mycity.domain.city.api.dto.UpdateCityDto
-import de.rpr.mycity.domain.city.entity.CityEntity
-import de.rpr.mycity.domain.city.repository.CityRepository
-import de.rpr.mycity.domain.location.api.CoordinateDto
-import de.rpr.mycity.domain.location.jpa.Coordinate
+import de.rpr.mycity.api.CityService
+import de.rpr.mycity.api.CreateCityDto
+import de.rpr.mycity.api.UpdateCityDto
+import de.rpr.mycity.api.CoordinateDto
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.JUnitSoftAssertions
 import org.junit.Rule
@@ -58,7 +54,7 @@ internal class JpaCityServiceTest {
 
     @Test
     fun `'retrieveCity' should map existing entity from repository`() {
-        repository.save(CityEntity("city", "cityname", "description", Coordinate(1.0, -1.0)))
+        repository.save(CityEntity("city", "cityname", "description", CoordinateEmbeddable(1.0, -1.0)))
 
         val result = service.retrieveCity("city")
         softly.assertThat(result?.id).isNotNull
@@ -69,7 +65,7 @@ internal class JpaCityServiceTest {
 
     @Test
     fun `'retrieveCities' should map entity from repository`() {
-        repository.save(CityEntity("city", "cityname", "description", Coordinate(1.0, -1.0)))
+        repository.save(CityEntity("city", "cityname", "description", CoordinateEmbeddable(1.0, -1.0)))
         val result = service.retrieveCities()
 
         softly.assertThat(result).hasSize(1)
@@ -92,7 +88,7 @@ internal class JpaCityServiceTest {
 
     @Test
     fun `'updateCity' should update existing values`() {
-        val existingCity = repository.save(CityEntity("city", "cityname", "description", Coordinate(1.0, -1.0))).toDto()
+        val existingCity = repository.save(CityEntity("city", "cityname", "description", CoordinateEmbeddable(1.0, -1.0))).toDto()
 
         val result = service.updateCity(existingCity.id, UpdateCityDto("new name", "new description", CoordinateDto(-1.0, -1.0)))
 
@@ -112,7 +108,7 @@ internal class JpaCityServiceTest {
                 id = "city",
                 name = "cityname",
                 description = "description",
-                location = Coordinate(1.0, -1.0),
+                location = CoordinateEmbeddable(1.0, -1.0),
                 updatedAt = LocalDateTime.now().minusYears(1))).toDto()
 
         val result = service.updateCity(existingCity.id, UpdateCityDto(null, null, null))

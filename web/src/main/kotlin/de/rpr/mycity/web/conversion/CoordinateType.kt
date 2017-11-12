@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import de.rpr.mycity.domain.location.api.CoordinateDto
+import de.rpr.mycity.api.CoordinateDto
 
 
 @JsonSerialize(using = CoordinateSerializer::class)

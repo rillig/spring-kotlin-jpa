@@ -4,9 +4,9 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.eq
 import com.nhaarman.mockito_kotlin.reset
 import com.nhaarman.mockito_kotlin.verify
-import de.rpr.mycity.domain.city.api.CityService
-import de.rpr.mycity.domain.city.api.dto.CityDto
-import de.rpr.mycity.domain.location.api.CoordinateDto
+import de.rpr.mycity.api.CityService
+import de.rpr.mycity.api.CityDto
+import de.rpr.mycity.api.CoordinateDto
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Before
 import org.junit.Test

@@ -1,4 +1,4 @@
-package de.rpr.mycity.domain
+package de.rpr.mycity.jpa
 
 import java.math.BigDecimal
 import javax.persistence.AttributeConverter

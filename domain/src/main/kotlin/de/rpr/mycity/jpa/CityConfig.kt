@@ -1,6 +1,5 @@
-package de.rpr.mycity.domain.city.api
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.city.InternalCityConfig
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 

@@ -2,7 +2,7 @@ package de.rpr.mycity.web.resource
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import de.rpr.mycity.domain.city.api.dto.CityDto
+import de.rpr.mycity.api.CityDto
 import de.rpr.mycity.web.conversion.CoordinateType
 import org.springframework.hateoas.ResourceSupport
 

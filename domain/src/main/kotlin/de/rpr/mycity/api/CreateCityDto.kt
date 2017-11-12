@@ -1,6 +1,5 @@
-package de.rpr.mycity.domain.city.api.dto
+package de.rpr.mycity.api
 
-import de.rpr.mycity.domain.location.api.CoordinateDto
 import org.hibernate.validator.constraints.NotEmpty
 import javax.validation.Valid
 

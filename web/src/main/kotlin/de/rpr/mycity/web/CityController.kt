@@ -1,9 +1,8 @@
 package de.rpr.mycity.web
 
-import de.rpr.mycity.domain.city.api.CityService
-import de.rpr.mycity.domain.city.api.dto.CreateCityDto
-import de.rpr.mycity.domain.city.api.dto.UpdateCityDto
-import de.rpr.mycity.web.CITIES_PATH
+import de.rpr.mycity.api.CityService
+import de.rpr.mycity.api.CreateCityDto
+import de.rpr.mycity.api.UpdateCityDto
 import de.rpr.mycity.web.resource.CityResource
 import org.slf4j.Logger
 import org.springframework.hateoas.Resources

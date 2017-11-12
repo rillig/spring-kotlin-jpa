@@ -1,7 +1,6 @@
-package de.rpr.mycity.domain.city
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.city.entity.CityEntity
-import de.rpr.mycity.domain.city.repository.CityRepository
+import de.rpr.mycity.jpa.CityEntity
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories

@@ -1,4 +1,4 @@
-package de.rpr.mycity.domain.location.api
+package de.rpr.mycity.api
 
 data class CoordinateDto(
         val longitude: Double,

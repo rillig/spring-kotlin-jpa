@@ -1,11 +1,9 @@
-package de.rpr.mycity.domain.city
+package de.rpr.mycity.jpa
 
-import de.rpr.mycity.domain.city.api.CityService
-import de.rpr.mycity.domain.city.api.dto.CityDto
-import de.rpr.mycity.domain.city.api.dto.CreateCityDto
-import de.rpr.mycity.domain.city.api.dto.UpdateCityDto
-import de.rpr.mycity.domain.city.entity.CityEntity
-import de.rpr.mycity.domain.city.repository.CityRepository
+import de.rpr.mycity.api.CityDto
+import de.rpr.mycity.api.CityService
+import de.rpr.mycity.api.CreateCityDto
+import de.rpr.mycity.api.UpdateCityDto
 import org.slf4j.Logger
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional

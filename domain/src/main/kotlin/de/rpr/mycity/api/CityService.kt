@@ -1,8 +1,4 @@
-package de.rpr.mycity.domain.city.api
-
-import de.rpr.mycity.domain.city.api.dto.CityDto
-import de.rpr.mycity.domain.city.api.dto.CreateCityDto
-import de.rpr.mycity.domain.city.api.dto.UpdateCityDto
+package de.rpr.mycity.api
 
 interface CityService {
 
